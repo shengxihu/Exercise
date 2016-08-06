@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M15 34
+C142 114 131 322 111 114
+C191 111 175 294 156 294
+C111 294 111 111 111 114
+C111 161 111 184 156 184
+C191 111 175 294 156 294
+C111 294 111 111 111 114
+C111 161 111 184 156 184
+C211 100 186 274 156 274"
+style="fill:blue;stroke:red;stroke-width:2"/>
+</svg>
