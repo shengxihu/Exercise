@@ -1,10 +1,20 @@
 var express = require('express');
 var app = express();
- 
+var fs = require('fs'); 
 var hbs = require('hbs');
 
 // 加载数据模块
 var blogEngine = require('./blog');
+fs.watchFile('./message.txt', function (curr, prev) {
+  console.log('the current mtime is: ' + curr.mtime);
+  console.log('the previous mtime was: ' + prev.mtime);
+});
+
+fs.writeFile('./message.txt', "changed", function (err) {
+  if (err) throw err;
+
+  console.log("file write complete");   
+});
  
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "sync-request": "^3.0.1"
+  }
+}
