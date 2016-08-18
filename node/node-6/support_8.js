@@ -50,7 +50,7 @@ for(var j=70;j<80;j++){
 			data.time=time[i];
 			data.scan=scan[i];
 			data.desc_arr=desc_arr[i];
-			fs.appendFile('segmentfaultBlog_8.json',JSON.stringify(data),"utf-8",function(err){
+			fs.appendFile('./store/segmentfaultBlog_8.json',JSON.stringify(data),"utf-8",function(err){
 				if (err) {
 					throw err;
 				} else {
