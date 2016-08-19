@@ -13,11 +13,12 @@ process.on('message',function(m){
 })
 
 function support(start,add){
-	console.log(start,add)
-	for(var j=start;j<start+add;j++){
+	console.log(start,add);
+	for(var j=start;j<=start+add;j++){
 		(function(j){
 			var url=src+j;
-			request('https://segmentfault.com/blogs?page=1', function(err,res){
+			console.log(url);
+			request(url, function(err,res){
 				var html=res.text.toString();
 				console.log("向第"+j+"页发出请求！")
 				var $ = cheerio.load(html);
