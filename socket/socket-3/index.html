@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>消息确认</title>
+</head>
+<body>
+<h1>Hello world</h1>
+<button>Button!</button>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+ <script>
+ var socket = io.connect(); // TIP: .connect with no args does auto-discovery
+ socket.on('connect', function () { // TIP: you can avoid listening on `connect` and listen on events directly too!
+   socket.emit('ferret', 'tobi', function (data) {
+     console.log(data); // data will be 'woot'   这是因为服务器端的fn函数把传入fn的参数赋值给了触发事件回调函数的data参数，见控制台！
+   });
+  socket.on('info',function(data){
+  	console.log(data);
+  })
+ });
+</script>
+</html>

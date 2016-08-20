@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试</title>
+</head>
+<body>
+<h1>Hello world!</h1>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script>
+  var socket = io(); // TIP: io() with no args does auto-discovery
+  socket.on('connect', function () { // TIP: you can avoid listening on `connect` and listen on events directly too!
+    console.log(2);
+    socket.emit('firefox');
+  });
+  socket.on('test',function(data){
+    alert(data);
+  });
+</script>
+</body>
+</html>
