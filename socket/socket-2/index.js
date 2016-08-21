@@ -23,8 +23,9 @@ var chat = io
     console.log("connected!")
    socket.emit('a message', {
        that: 'only'
-     , '/chat': 'will get';
-     socket.join('some');
+     , '/chat': 'will get'
+   },function(){
+      socket.join('some');
      socket.to('some').emit('someEvent');
    });
    socket.emit('a message', {

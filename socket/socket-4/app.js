@@ -16,8 +16,8 @@ function handler (req, res) {
     res.end(data);
   });
 }
-
-io.sockets.on('connection', function (socket) {
+//注意once
+io.sockets.once('connection', function (socket) {
     socket.on('firefox', function (data) {
       console.log("hello hsx!")
         socket.join('firefox');

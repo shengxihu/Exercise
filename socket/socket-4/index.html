@@ -12,6 +12,7 @@
   socket.on('connect', function () { // TIP: you can avoid listening on `connect` and listen on events directly too!
     console.log(2);
     socket.emit('firefox');
+    socket.emit('hsx');
   });
   socket.on('test',function(data){
     alert(data);
