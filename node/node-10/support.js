@@ -17,7 +17,6 @@ function support(start,add){
 	for(var j=start;j<=start+add;j++){
 		(function(j){
 			var url=src+j;
-			console.log(url);
 			request(url, function(err,res){
 				var html=res.text.toString();
 				console.log("向第"+j+"页发出请求！")
@@ -48,7 +47,6 @@ function support(start,add){
 				$(".stream-list__item").each(function(i,elem){
 					scan[i]=$(this).children(".blog-rank").children(".views").text().replace(/\ +/g,"").replace(/[\r\n]/g,"");
 				});
-				var res={};
 				for(var i=0;i<title.length;i++){
 					(function(i){
 						var data={};

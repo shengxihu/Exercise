@@ -1,19 +1,8 @@
 var cheerio=require("cheerio");
-var request=require("sync-request");
-var fs=require("fs");
-var User = require("./user.js");
-var src="https://segmentfault.com/blogs?page=";
-var time_1=new Date();
-for(var j=1;j<1000;j++){
-	(function(j){
-	var url=src+j;
-	var html=request('GET',url).getBody().toString();
-	if(j==19){
-		var time_2=new Date()-time_1;
-		console.log(time_2);
-	}
-	console.log("向第"+j+"页发出请求！")
-	var $ = cheerio.load(html);
+var fs=require('fs');
+
+function handleHtml(input,page){
+	var $ = cheerio.load(input);
 	var desc_arr=new Array();
 	var link=new Array();
 	var title=new Array();
@@ -40,34 +29,14 @@ for(var j=1;j<1000;j++){
 	$(".stream-list__item").each(function(i,elem){
 		scan[i]=$(this).children(".blog-rank").children(".views").text().replace(/\ +/g,"").replace(/[\r\n]/g,"");
 	});
-	var res={};
-	for(var i=0;i<title.length;i++){
-		(function(i){
-			var data={};
-			data.title=title[i];
-			data.author=author[i];
-			data.link=link[i];
-			data.time=time[i];
-			data.scan=scan[i];
-			data.desc_arr=desc_arr[i];
-			fs.appendFile('./store/segmentfaultBlog_1.json',JSON.stringify(data),"utf-8",function(err){
-				if (err) {
-					throw err;
-				} else {
-					console.log("第"+j+"页第"+i+"条数据写入成功！")
-				}
-			})
-			var item = new User(data);
-			item.save(function(err){
-				if (err) {throw err}
-					console.log("第"+j+"页第"+i+"条存入数据库成功！")
-			})
-			// User.find({ title: "大数据分页方案" }, function(err, user) {
-			//   if (err) throw err;
-
-			//   console.log(user);
-			// });
-		})(i)
-	}
-})(j)
+	var res={
+		'title':title,
+		'author':author,
+		'link':link,
+		'time':time,
+		'scan':scan,
+		'desc_arr':desc_arr
+	};
+	return res;
 }
+exports.handleHtml=handleHtml;
