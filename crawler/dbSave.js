@@ -17,4 +17,4 @@ function dbSave(data,page){
 		})(i)
 	}
 }
-exports.dbSave=dbSave;
+module.exports.dbSave=dbSave;

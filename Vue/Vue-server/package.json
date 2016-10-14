@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "babel-helper-vue-jsx-merge-props": "^2.0.1",
+    "babel-plugin-syntax-jsx": "^6.13.0",
+    "babel-plugin-transform-vue-jsx": "^3.1.0",
+    "express": "^4.14.0",
+    "vue": "^2.0.0-rc.8",
+    "vue-server-renderer": "^2.0.0-rc.8"
+  }
+}

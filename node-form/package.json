@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.6.0",
+    "superagent": "^2.2.0"
+  }
+}
