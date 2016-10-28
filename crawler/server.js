@@ -1,7 +1,9 @@
 var express = require('express');
 var swig = require('swig');
 var app = express();
+var bodyParser = require('body-parser');
 var User = require("./user.js");
+var fs = require('fs');
 
 function server(data,flag,i) {
 
@@ -9,6 +11,9 @@ function server(data,flag,i) {
 		res.send(data)
 	})
 	if (!flag) {
+		app.use(bodyParser.urlencoded({extended: false}));
+		app.use(bodyParser.json());
+
 		app.set('view engine', 'html');  // 用hbs作为模版引擎
         app.set('views', __dirname + '/view'); // 模版所在路径
         app.engine('html', swig.renderFile);
@@ -20,11 +25,12 @@ function server(data,flag,i) {
 			res.render('add');
 		})
 		app.post('/add',function(req,res){
-			var dt={"title" : "test", "author" : "白小爱", "link" : "https://segmentfault.com/a/1190000007019545", "time" : "9月27日", "desc_arr" : "由于FetchAPI是基于Promise设计，有必要先学习一下Promise，推荐阅读MDNPromise教程本文章内容推荐阅读MDNFetch教程语法说明{代码...}具体参数案例：{代码...}url定义要获取的资源。这可能是：...", "__v" : 0 }
-			var item = new User(dt);
-			item.save(function(err){
+			var title = req.body.title;
+			var re = new RegExp(title);
+			User.find({'title':re},function(err, user){
 				if (err) {throw err}
-				console.log("post请求成功！")
+				console.log("post请求成功！");
+				res.send({data:user});
 			})
 		})
 

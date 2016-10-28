@@ -21,8 +21,11 @@ var app = new Vue({
   		add() {
   			superagent
    				.post('/add')
-   				.end(function(){
-   					 document.write("添加成功")
+   				.send({ 'title': 'webpack'})
+   				.end(function(err,req){
+   					 for(key in req){
+   					 	document.body.innerHTML+=req[key];
+   					 }
    				});
   		}
   	}
