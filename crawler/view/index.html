@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试</title>
+</head>
+<body>
+{% for items in data %}
+	<a href="{{ items.link }}">
+		<p>{{ items.title }}</p>
+	</a>
+	<div>发布时间：
+		<p>{{ items.time }}</p>
+	</div>
+	<div>作者：
+		<p>{{ items.author }}</p>
+	</div>
+	<div>阅读量：
+		<p>{{ items.scan }}</p>
+	</div>
+	<div>描述：
+		<p>{{ items.desc_arr }}</p>
+	</div>
+{% endfor %}
+</body>
+</html>

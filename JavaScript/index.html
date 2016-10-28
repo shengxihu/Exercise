@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试</title>
+</head>
+<body>
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise -->
+
+<script>
+var getJSON = function(url) {
+  var promise = new Promise(function(resolve, reject){
+    var client = new XMLHttpRequest();
+    client.open("GET", url);
+    client.onreadystatechange = handler;
+    client.responseType = "json";
+    client.setRequestHeader("Accept", "application/json");
+    client.send();
+
+    function handler() {
+      if (this.status === 200) { 
+              resolve(this.response); 
+          } else { 
+              reject(new Error(this.statusText)); 
+          }
+    };
+  });
+
+  return promise;
+};
+
+getJSON("./post.json").then(function(json) {
+  console.log('Contents: ' + json);
+  return 'hsx';
+}, function(error) {
+  console.error('出错了', error);
+}).then(function(jso){
+  cosole.log(jso)
+}).catch(function(error) {
+  // 处理前一个回调函数运行时发生的错误
+  console.log('发生错误！', error);
+});;
+</script>
+</body>
+</html>
