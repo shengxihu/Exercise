@@ -15,6 +15,9 @@ for(var page=0;page<20;page++){
 			dbSave(res,page);
 			var bd=dataParse(res, page)
 			server(bd,flag,page);
+			if (!flag) {
+				console.log("Listening on :http://localhost:3000");
+			}
 			flag = true;
 		}
 		html(test,page);

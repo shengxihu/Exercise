@@ -3,24 +3,121 @@
 <head>
 	<meta charset="utf-8">
 	<title>测试</title>
+	<script src="http://ofr4g2z4a.bkt.clouddn.com/vue.js"></script>
+	<script src="http://ofr4g2z4a.bkt.clouddn.com/superagent.js"></script>
+<style>
+body {
+	margin: 0;
+}
+.nav_bar {
+	height: 40px;
+	width: 100%;
+	box-sizing: border-box;
+	display: inline-block;
+	line-height: 40px;
+	padding: 0 40px;
+	color: #fff;
+	background: rgb(0,129,250);
+}
+.nav_bar span {
+	position: absolute;
+	top: 0;
+	left: calc(50% - 10px);
+}
+.link_left,.link_right {
+	display: block;
+	padding: 10px;
+}
+.link_left {
+	float: left;
+}
+.link_right {
+	float: right;
+}
+.link {
+	width: 100%;
+	display: inline-block;
+}
+.home,.search {
+	display: inline-block;
+}
+.search {
+	float: right;
+}
+.search .val {
+	width: 200px;
+    height: 18px;
+    border: 1px solid silver;
+    outline: none;
+    border-radius: 5px;
+}
+.items {
+	padding: 10px 20px;
+	border-bottom: 1px solid silver;
+}
+.items:hover {
+	padding:15px 15px 5px 25px;
+	box-shadow: 5px -10px 5px rgba(0,0,0,.2) inset, -5px 10px 5px rgba(0,0,0,.2) inset;
+}
+</style>
 </head>
 <body>
-{% for items in data %}
-	<a href="{{ items.link }}">
-		<p>{{ items.title }}</p>
-	</a>
-	<div>发布时间：
-		<p>{{ items.time }}</p>
+<div id="app">
+	<div class="nav_bar">
+		<div class="home">segmentfault文章列表</div>
+		<span>第{{pg}}页</span>
+		<div class="search">
+			<input class="val" v-model:value="message" type="text" name="search">
+			<input type="button" value="search" @click='add' name="bt">
+		</div>
 	</div>
-	<div>作者：
-		<p>{{ items.author }}</p>
+	<div class="link">
+		<a class="link_left" href="http://localhost:3000/{{pg-1}}">上一页</a>
+		<a class="link_right" href="http://localhost:3000/{{pg+1}}">下一页</a>
 	</div>
-	<div>阅读量：
-		<p>{{ items.scan }}</p>
-	</div>
-	<div>描述：
-		<p>{{ items.desc_arr }}</p>
-	</div>
-{% endfor %}
+	{% for items in data %}
+		<div class="items">
+			<a href="{{ items.link }}">
+				<p>{{ items.title }}</p>
+			</a>
+			<div>发布时间：
+				<p>{{ items.time }}</p>
+			</div>
+			<div>作者：
+				<p>{{ items.author }}</p>
+			</div>
+			<div>阅读量：
+				<p>{{ items.scan }}</p>
+			</div>
+			<div>描述：
+				<p>{{ items.desc_arr }}</p>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+<script>
+var app = new Vue({
+  	el: '#app',
+  	data:{
+  		message: ' '
+  	},
+  	methods: {
+  		add() {
+  			var self=this;
+  			superagent
+   				.post('/search')
+   				.send({ 'title': 'webpack'})
+   				.end(function(err,res){
+   					console.log(err)
+   				}).then(function(res){
+   					if(res){
+   						window.location = 'http://localhost:3000/search';
+   						console.log(res)
+   					}
+   				});
+  		}
+  	}
+})
+</script>
 </body>
 </html>
