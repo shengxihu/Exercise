@@ -5,7 +5,7 @@
 	<title>测试</title>
 	<script src="http://ofr4g2z4a.bkt.clouddn.com/vue.js"></script>
 	<script src="http://ofr4g2z4a.bkt.clouddn.com/superagent.js"></script>
-<style>
+<!-- <style>
 body {
 	margin: 0;
 }
@@ -59,22 +59,22 @@ body {
 	padding:15px 15px 5px 25px;
 	box-shadow: 5px -10px 5px rgba(0,0,0,.2) inset, -5px 10px 5px rgba(0,0,0,.2) inset;
 }
-</style>
+</style> -->
 </head>
 <body>
 <div id="app">
 	<div class="nav_bar">
-		<div class="home">segmentfault文章列表</div>
-		<span>第{{pg}}页</span>
-		<div class="search">
+		<!-- <div class="home">segmentfault文章列表</div> -->
+		<!-- <span>第{{pg}}页</span> -->
+		<!-- <div class="search">
 			<input class="val" v-model:value="message" type="text" name="search">
 			<input type="button" value="search" @click='add' name="bt">
-		</div>
+		</div> -->
 	</div>
-	<div class="link">
+	<!-- <div class="link">
 		<a class="link_left" href="http://localhost:3000/{{pg-1}}">上一页</a>
 		<a class="link_right" href="http://localhost:3000/{{pg+1}}">下一页</a>
-	</div>
+	</div> -->
 	{% for items in data %}
 		<div class="items">
 			<a href="{{ items.link }}">
