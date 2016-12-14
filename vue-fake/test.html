@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="text">
+    {{ text }}
+</div>
+<script>
+function compile(node,vm){
+    var reg = /\{\{(.*)\}\}/
+    if(node.nodeType === 1) {
+        var attr = node.attributes
+        for(var i=0;i<attr)
+    }
+}
+</script>
+</body>
+</html>
