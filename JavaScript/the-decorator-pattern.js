@@ -29,7 +29,7 @@ BMWXCar.prototype.drive = function() {
     console.log("宝马X开车")
 }
 BMWXCar.prototype.start = function() {
-    this.car.drive()
+    this.car.start()
     console.log("宝马X启动")
 }
 
@@ -39,5 +39,5 @@ car =new BMWCar(car)
 
 car =new BMWXCar(car)
 
-// car.drive()
+car.drive()
 car.start()
