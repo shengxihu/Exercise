@@ -5,18 +5,15 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">
-    <input type="text" v-model="text">
-    {{ text }}
-</div>
-<script>
-function compile(node,vm){
-    var reg = /\{\{(.*)\}\}/
-    if(node.nodeType === 1) {
-        var attr = node.attributes
-        for(var i=0;i<attr)
+    <div data="hello" id="test">Hello world!<span>hsx</span></div>
+    <script>
+    node = document.getElementById("test")
+    var child;
+    var i =0;
+	while(child = node.firstChild && i<10){
+        console.log(node.firstChild)
+        i++
     }
-}
-</script>
+    </script>
 </body>
 </html>

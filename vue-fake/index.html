@@ -17,6 +17,7 @@
 			var child;
 			while (child = node.firstChild) {
 				compile(child, vm);
+				console.log(node)
 				flag.append(child); // 将子节点劫持到文档片段中
 			}
 			return flag;
