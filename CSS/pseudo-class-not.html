@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.negation {
+  color: black;
+}
+
+.negation .default:not([data-red="yes"]) {
+    color: red;
+}
+
+.negation .default:not([data-red="no"]) {
+  color: red;
+}
+
+/*a:not(span) {
+    color: pink;
+}*/
+a {
+    color: darkviolet;
+}
+</style>
+</head>
+<body>
+<div class="negation">
+  <div class="default" data-red="no">
+    <a href="http://www.baidu.com" rel="green">这里是绿色</a>
+    <a href="http://www.ele.me" rel="default">这里也是绿色</a>
+    <a href="http://www.sina.com" rel="blue">这里是蓝色</a>
+  </div>
+  <div class="default" data-red="no">
+    这里是黑色
+  </div>
+  <div class="default" data-red="yes">
+    这里是红色
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.mutability :read-only {
+  color: red;
+}
+
+.mutability :read-write {
+  color: green;
+}
+</style>
+</head>
+<body>
+    <div class="mutability">
+        <input type="text" name="read-write-input" value="read-write">
+        <p contenteditable="true">read-write-paragraph</p>
+        <p>read-only-paragraph</p>
+    </div>
+</body>
+</html>
